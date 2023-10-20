@@ -7,7 +7,7 @@ class DatabaseManager:
     def __init__(self, base_path: str):
         self.base_path = base_path
 
-    def CheckDatabase(self, sql_file: str) -> None:
+    def checkDatabase(self, sql_file: str) -> None:
         if not os.path.exists(self.base_path):
             print("INFO: Creating DB")
 
@@ -32,7 +32,7 @@ class DatabaseManager:
             finally:
                 connection.close()
 
-    def Execute(self, query: str, args: tuple[str] = None, many: bool = False):
+    def execute(self, query: str, args: tuple[str] = None, many: bool = False):
         connection = sqlite3.connect(self.base_path, isolation_level=None)
         cur = connection.cursor()
 

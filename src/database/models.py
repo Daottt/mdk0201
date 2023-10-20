@@ -1,4 +1,3 @@
-from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel
 
@@ -43,7 +42,7 @@ class BorrowedRecord(BaseModelModify):
     user_id: int
     personal_id: int
     book_id: int
-    issue_date: datetime
-    return_date: datetime
+    issue_date: str
+    return_date: str
     is_returned: bool
 

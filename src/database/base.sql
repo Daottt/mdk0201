@@ -17,15 +17,15 @@ create table Location(
 	id integer primary key autoincrement,
 	address varchar(100) not null,
 	postal_code varchar(100) not null,
-	countryId integer not null,
-	foreign key (countryId) references Country(id)
+	country_id integer not null,
+	foreign key (country_id) references Country(id)
 );
 
 create table Library(
 	id integer primary key autoincrement,
 	name varchar(100) not null,
-	locationId integer not null,
-	foreign key (locationId) references Location(id)
+	location_id integer not null,
+	foreign key (location_id) references Location(id)
 );
 
 create table Job(
@@ -36,12 +36,12 @@ create table Job(
 create table Book(
 	id integer primary key autoincrement,
 	name varchar(100) not null,
-	genreId integer not null,
-	libraryId integer not null,
-	authorId integer not null,
-	foreign key (genreId) references Genre(id),
-	foreign key (authorId) references Author(id),
-	foreign key (libraryId) references Library(id)
+	genre_id integer not null,
+	library_id integer not null,
+	author_id integer not null,
+	foreign key (genre_id) references Genre(id),
+	foreign key (library_id) references Author(id),
+	foreign key (author_id) references Library(id)
 );
 
 create table Users(
@@ -54,19 +54,19 @@ create table Personal(
 	id integer primary key autoincrement,
 	login varchar(16) not null unique,
 	password varchar(16) not null,
-	jobId integer not null,
-	foreign key (jobId) references Job(id)
+	job_id integer not null,
+	foreign key (job_id) references Job(id)
 );
 
-create table Borrowed_Record(
+create table BorrowedRecord(
 	id integer primary key autoincrement,
-	UsersId integer not null,
-	presonalId integer not null,
-	bookId integer not null,
+	user_id integer not null,
+	personal_id integer not null,
+	book_id integer not null,
 	issue_date Date not null,
 	return_date Date not null,
 	isReturned bool not null,
-	foreign key (UsersId) references Users(id),
-	foreign key (presonalId) references Personal(id),
-	foreign key (bookId) references Book(id)
+	foreign key (user_id) references Users(id),
+	foreign key (personal_id) references Personal(id),
+	foreign key (book_id) references Book(id)
 );

@@ -14,6 +14,7 @@ def index() -> RedirectResponse:
 
 
 if __name__ == '__main__':
-    db.CheckDatabase('src/database/base.sql')
+    db.checkDatabase('src/database/base.sql')
 
     uvicorn.run("main:app", reload=True, host='127.0.0.1')
+
